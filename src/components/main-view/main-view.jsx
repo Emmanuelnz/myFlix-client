@@ -1,4 +1,7 @@
 import React from 'react';
+import axios from 'axios';
+
+import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 
@@ -7,33 +10,53 @@ export class MainView extends React.Component {
   constructor() {
     super();
     this.state= {
-      movies: [
-        {_id: 1, Title: 'The Batman', Description: 'Batman ventures into Gotham City\'s underworld when a sadistic killer leaves behind a trail of cryptic clues. As the evidence begins to lead closer to home and the scale of the perpetrator\'s plans become clear, he must forge new relationships, unmask the culprit and bring justice to the abuse of power and corruption that has long plagued the metropolis.', Directors: 'Matt Reeves', Genre: 'Adventure', ImagePath: 'https://m.media-amazon.com/images/M/MV5BMDdmMTBiNTYtMDIzNi00NGVlLWIzMDYtZTk3MTQ3NGQxZGEwXkEyXkFqcGdeQXVyMzMwOTU5MDk@._V1_.jpg'},
-
-        {_id: 2, Title: 'Batman vs Robin', Description: 'Damian Wayne has a hard time accepting his father\'s no-killing rule, and soon starts to believe his destiny lies within a secret society.', Directors: 'Jay Oliva', Genre: 'Action', ImagePath: 'https://m.media-amazon.com/images/M/MV5BMjI0ODY2MDE5Nl5BMl5BanBnXkFtZTgwMTk0NTcyNTE@._V1_.jpg'},
-
-        {_id: 3, Title: 'Justice League: War', Description: 'Superman , Wonder Woman, Batman and other superheroes join forces to save Earth from Darkseid.', Directors: 'Jay Oliva', Genre: 'Superhero', ImagePath: 'https://m.media-amazon.com/images/M/MV5BYzA4ZjA3NzUtNDhjNS00OGNlLWI4ZWUtYzhkMmJiZDU2ZWExXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg'}
-      ],
-      selectedMovie: null
-    }
+      movies: [],
+      selectedMovie: null,
+      user: null
+    };
   }
 
-  setSelectedMovie(newSelectedMovie) {
+  componentDidMount() {
+    axios.get('https://myflixfr.herokuapp.com/movies')
+      .then(response => {
+        this.setState ({
+          movies: response.data
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  setSelectedMovie(movie) {
     this.setState ({
-      selectedMovie: newSelectedMovie
+      selectedMovie: movie
+    });
+  }
+
+  // After successful login by user, this function updates the `user` property in state to that specific user
+  onLoggedIn(user) {
+    this.setState({
+      user
     });
   }
 
   render() {
-    const { movies, selectedMovie } = this.state;
-    if (movies.length === 0) return <div className="main-view">The list is empty!</div>;
+    const { movies, selectedMovie, user } = this.state;
+    
+    // If no user, LoginView is rendered. If user is logged in, the user details are passed as prop to LoginView
+    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+
+    // Before Movies have been loaded
+    if (movies.length === 0) return <div className="main-view" />;
 
     return (
       <div className="main-view">
         {selectedMovie
           ? <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
+          
           : movies.map(movie => (
-            <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
+            <MovieCard key={movie._id} movie={movie} onMovieClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie) }}/>
           ))
         }
       </div>

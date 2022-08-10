@@ -1,5 +1,11 @@
-$color: steelblue;
+html {
+  background: rgb(74,15,65);
+  background: linear-gradient(90deg, rgba(74,15,65,1) 28%, rgba(31,32,106,1) 63%, rgba(15,52,164,1) 87%);    
+  font-size: 20px;
+}
 
-.my-flix {
-  color: $color;
+.app-container {
+  background: rgb(27,27,28);
+  color: white;
+  cursor: pointer;
 }

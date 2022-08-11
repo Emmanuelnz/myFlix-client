@@ -17,6 +17,25 @@ text color (button border/text) - gray
   border-radius: 6px;
   border-color: var(--text);
 }
+/*
+Colors Used
+
+primary color (button background) - cyan  
+secondary color ()- purple
+text color (button border/text) - gray 
+*/
+:root {
+  --primary: #4ac4a8;
+  --secondary: #9068cf;
+  --text: #171717;
+}
+
+.registerbtn {
+  cursor: pointer;
+  background-color: var(--primary);
+  border-radius: 6px;
+  border-color: var(--text);
+}
 html {
   background: #303a40;
   font-size: 20px;

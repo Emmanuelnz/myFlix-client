@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Form, Button, Container, Row, Col, Card } from "react-bootstrap";
 
 import './login-view.scss';
 
@@ -14,18 +15,29 @@ export function LoginView(props) {
   };
   
   return (
-    <form>
-      <label>
-        Username:
-        <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-      </label>
-      <label>
-        Password:
-        <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-      </label>
-      <button className='loginbtn' type="submit" onClick={handleSubmit}>Log In</button>
-      <button className='registerbtn' type="button">Register</button>
-    </form>
+    <Container>
+      <Row>
+        <Col>
+          <Card className='loginbdy'>
+            <Card.Body>
+              <Card.Title className='login-title'>Sign In</Card.Title>
+              <Form>
+                <Form.Group controlId='formUsername'>
+                  <Form.Label>Username: </Form.Label>
+                  <Form.Control type='text' onChange={e => setUsername(e.target.value)} placeholder='Enter Username' />
+                  </Form.Group>
+
+                <Form.Group controlId='formPassword'>
+                    <Form.Label>Password: </Form.Label>
+                    <Form.Control type='password' onChange={e => setPassword(e.target.value)} placeholder='Enter Password' />
+                </Form.Group>
+                  <Button variant='primary' type='submit' onClick={handleSubmit}>Sign in</Button>
+              </Form>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

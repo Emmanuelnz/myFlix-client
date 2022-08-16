@@ -1,49 +1,48 @@
 /*
 Colors Used
 
-primary color (button background) - cyan  
-secondary color ()- purple
-text color (button border/text) - gray 
+primary color (button background) - #303a40 grey
+secondary color ()- #4ac4a8 cyan
 */
-:root {
-  --primary: #4ac4a8;
-  --secondary: #9068cf;
-  --text: #171717;
+.app-container {
+  background-color: #303a40;
 }
 
-.registerbtn {
-  cursor: pointer;
-  background-color: var(--primary);
-  border-radius: 6px;
-  border-color: var(--text);
+.register-title {
+  text-align: center;
+}
+
+.registerbdy {
+  margin: 20%;
+  font-weight: 500;
 }
 /*
 Colors Used
 
-primary color (button background) - cyan  
-secondary color ()- purple
-text color (button border/text) - gray 
+primary color (button background) - #303a40 grey
+secondary color ()- #4ac4a8 cyan
 */
-:root {
-  --primary: #4ac4a8;
-  --secondary: #9068cf;
-  --text: #171717;
+.login-title {
+  text-align: center;
 }
 
-.loginbtn {
-  cursor: pointer;
-  background-color: var(--primary);
-  border-radius: 6px;
-  border-color: var(--text);
+.loginbdy {
+  margin: 20%;
+  font-weight: 500;
 }
+/* Colors used -
+
+background color (also primary color) - #303a40 
+*/
 html {
   background: #303a40;
-  font-size: 20px;
 }
 
-.app-container {
-  background: rgb(27, 27, 28);
-  color: white;
-  cursor: pointer;
+.index-mv-container {
+  margin-top: 9%;
+}
+
+.mview-text {
+  font-weight: 600;
 }
 /*# sourceMappingURL=index.011f33b6.css.map */

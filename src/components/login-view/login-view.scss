@@ -1,20 +1,15 @@
 /*
 Colors Used
 
-primary color (button background) - cyan  
-secondary color ()- purple
-text color (button border/text) - gray 
+primary color (button background) - #303a40 grey
+secondary color ()- #4ac4a8 cyan
 */
 
-:root {
-  --primary: #4ac4a8; 
-  --secondary: #9068cf;
-  --text: #171717;
+.login-title {
+  text-align: center;
 }
 
-.loginbtn {
-  cursor: pointer;
-  background-color: var(--primary);
-  border-radius: 6px;
-  border-color: var(--text);
+.loginbdy {
+  margin: 20%;
+  font-weight: 500;
 }

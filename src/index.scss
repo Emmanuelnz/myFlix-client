@@ -1,10 +1,19 @@
+/* Colors used -
+
+background color (also primary color) - #303a40 
+*/
+
 html {
-  background: #303a40;    
-  font-size: 20px;
+  background: #303a40;
 }
 
-.app-container {
-  background: rgb(27,27,28);
-  color: white;
-  cursor: pointer;
+// Main view scss
+.index-mv-container {
+  margin-top: 9%;
+}
+
+
+// Movie View scss
+.mview-text {
+  font-weight: 600;
 }

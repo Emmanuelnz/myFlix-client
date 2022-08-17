@@ -4,7 +4,6 @@ import { Form, Button, Card, CardGroup, Container, Col, Row, } from "react-boots
 
 
 import './registration-view.scss';
-import CardHeader from 'react-bootstrap/esm/CardHeader';
 
 export function RegistrationView(props) {
   const [ username, setUsername ] = useState('');
@@ -29,22 +28,22 @@ export function RegistrationView(props) {
                 <Form>
                   <Form.Group controlId='formUsername'>
                     <Form.Label>Username: </Form.Label>
-                    <Form.Control type='text' onChange={e => setUsername(e.target.value)} Placeholder="Enter username (username must be at least 5 characters) " />
+                    <Form.Control type='text' onChange={e => setUsername(e.target.value)} placeholder="Enter username (username must be at least 5 characters) " />
                   </Form.Group>
 
                   <Form.Group controlId='formPassword'>
                     <Form.Label>Password: </Form.Label>
-                    <Form.Control type='password' onChange={e => setPassword(e.target.value)} Placeholder='Enter password' />
+                    <Form.Control type='password' onChange={e => setPassword(e.target.value)} placeholder='Enter password' />
                   </Form.Group>
 
                   <Form.Group controlId='formEmail'>
                     <Form.Label>Email: </Form.Label>
-                    <Form.Control type='email' onChange={e => setPassword(e.target.value)} Placeholder='Enter Email address'/>
+                    <Form.Control type='email' onChange={e => setEmail(e.target.value)} placeholder='Enter Email address'/>
                   </Form.Group>
 
                   <Form.Group controlId='formBirthday'>
                     <Form.Label>Birthday: </Form.Label>
-                    <Form.Control type='date' onChange={e => setPassword(e.target.value)} />
+                    <Form.Control type='date' onChange={e => setBirthday(e.target.value)} />
                   </Form.Group>
 
                   <Button variant='primary' type='submit' onClick={handleSubmit}>Register</Button>

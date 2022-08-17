@@ -9,7 +9,7 @@ export class MovieCard extends React.Component {
 
     return (
       <Card className='h-100' bg='dark' text='light'>
-        <Card.Img variant="top" crossOrigin='anonymous' src={movie.ImagePath} onClick={() => onMovieClick(movie)} />
+        <Card.Img style={{cursor:'pointer'}} variant="top" crossOrigin='anonymous' src={movie.ImagePath} onClick={() => onMovieClick(movie)} />
         <Card.Body>
           <Card.Title>{movie.Title}</Card.Title>
         </Card.Body>

@@ -55,7 +55,7 @@ export class MainView extends React.Component {
 
     if (!registered) return <RegistrationView onRegistration={registered => this.onRegistration(registered)} />
 
-    // If no user, LoginView is rendered. If user is logged in, the user details are passed as prop to LoginView
+    // If user is logged in, the user details are passed as prop to LoginView. If no user, LoginView is rendered.
     if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
 
     // Before Movies have been loaded
@@ -72,7 +72,7 @@ export class MainView extends React.Component {
                   <Offcanvas.Title>myFlix</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                  <Nav className='me-auto'>
+                  <Nav className='ms-auto'>
                     <Nav.Link href='#logout'>Log Out</Nav.Link>
                   </Nav>
                 </Offcanvas.Body>
@@ -89,9 +89,9 @@ export class MainView extends React.Component {
             )
             
             : (
-              <Row>
+              <Row className='gap-3 mx-auto mt-5 pt-5'>
                 {movies.map(movie => (
-                  <Col lg={2} md={3} sm={4}>
+                  <Col lg={2} md={3} sm={5}>
                     <MovieCard key={movie._id} movie={movie} onMovieClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
                   </Col>
                 ))}

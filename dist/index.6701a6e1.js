@@ -25501,7 +25501,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __self: this
         }));
-        // If no user, LoginView is rendered. If user is logged in, the user details are passed as prop to LoginView
+        // If user is logged in, the user details are passed as prop to LoginView. If no user, LoginView is rendered.
         if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
             onLoggedIn: (user1)=>this.onLoggedIn(user1)
             ,
@@ -42140,6 +42140,9 @@ class MovieCard extends _reactDefault.default.Component {
             __self: this,
             children: [
                 /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Img, {
+                    style: {
+                        cursor: 'pointer'
+                    },
                     variant: "top",
                     crossOrigin: "anonymous",
                     src: movie.ImagePath,

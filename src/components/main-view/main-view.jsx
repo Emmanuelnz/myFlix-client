@@ -20,27 +20,32 @@ export class MainView extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('https://myflixfr.herokuapp.com/movies')
-      .then(response => {
-        this.setState ({
-          movies: response.data
-        });
-      })
-      .catch(error => {
-        console.log(error);
+    let accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem('user')
       });
+      this.getMovies(accessToken);
+    }
+  }
+
+  getMovies(token) {
+    axios.get('https://myflixfr.herokuapp.com/movies', {
+      headers: { Authorization: `Bearer ${token}`}
+    })
+    .then(response => {
+      this.setState({
+        movies: response.data
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   setSelectedMovie(movie) {
     this.setState ({
       selectedMovie: movie
-    });
-  }
-
-  // After successful login by user, this function updates the `user` property in state to that specific user
-  onLoggedIn(user) {
-    this.setState({
-      user
     });
   }
 
@@ -50,10 +55,30 @@ export class MainView extends React.Component {
     });
   }
 
+  // After successful login by user, this function updates the `user` property in state to that specific user
+  onLoggedIn(authData) {
+    console.log(authData);
+    this.setState({
+      user: authData.user.Username
+    });
+  
+    localStorage.setItem('token', authData.token);
+    localStorage.setItem('user', authData.user.Username);
+    this.getMovies(authData.token);
+  }
+
+  onLoggedOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.setState({
+      user: null
+    });
+  }
+
   render() {
     const { movies, selectedMovie, user, registered } = this.state;
 
-    if (!registered) return <RegistrationView onRegistration={registered => this.onRegistration(registered)} />
+    // if (!registered) return <RegistrationView onRegistration={registered => this.onRegistration(registered)} />
 
     // If user is logged in, the user details are passed as prop to LoginView. If no user, LoginView is rendered.
     if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
@@ -73,7 +98,7 @@ export class MainView extends React.Component {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                   <Nav className='ms-auto'>
-                    <Nav.Link href='#logout'>Log Out</Nav.Link>
+                    <Button onClick={() => { this.onLoggedOut() }}>Log Out</Button>
                   </Nav>
                 </Offcanvas.Body>
               </Navbar.Offcanvas>

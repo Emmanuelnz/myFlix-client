@@ -35,8 +35,9 @@ export function LoginView(props) {
       setPassword('Password must be at least 6 characters long');
         isReq = false;
     }
+
     return isReq;
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -74,11 +75,11 @@ export function LoginView(props) {
 
                 <Form.Group>
                     <Form.Label>Password: </Form.Label>
-                    <Form.Control type='password' placeholder='Enter Password'  onChange={e => setPassword(e.target.value)} /> 
+                    <Form.Control type='password' placeholder='Enter Password' onChange={e => setPassword(e.target.value)} /> 
                       {passwordErr && <p>{passwordErr}</p>}
                 </Form.Group>
                 
-                  <Button  className='mt-2' variant='primary' type='submit' value={password} onClick={handleSubmit}>Sign in</Button>
+                  <Button  className='mt-2' variant='primary' type='submit' onClick={handleSubmit}>Sign in</Button>
               </Form>
             </Card.Body>
             <Card.Footer>

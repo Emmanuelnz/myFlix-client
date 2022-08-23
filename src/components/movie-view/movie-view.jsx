@@ -1,5 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+// React-router imports
+import { Link } from 'react-router-dom';
+
+// React-bootstrap imports 
 import { Card, Container, Col, Row, Button } from 'react-bootstrap';
 
 
@@ -13,15 +18,23 @@ export class MovieView extends React.Component {
         <Row>
           <Col>
             <Card bg='dark' text='light'>
-              <Card.Img variant='top' crossOrigin='anonymous' src={movie.ImagePath} />
+              <Card.Img variant='top' crossOrigin='anonymous' src={ movie.ImagePath } />
               <Card.Body>
                 <Card.Title className='mview-title'> { movie.Title } </Card.Title>
                 <Card.Text>
                   <span className='mview-text'>Description: </span> { movie.Description } </Card.Text>
                 <Card.Text><span className='mview-text'>Directors: </span>{ movie.Directors.Name } </Card.Text>
                 <Card.Text><span className='mview-text'>Genre: </span>{ movie.Genre.Name } </Card.Text>
-                <Button variant='info' onClick={ () => {onBackClick(null); }}>Back</Button>
               </Card.Body>
+              <Card.Footer>
+                <Button variant='info' onClick={ () => {onBackClick(); }}>Back</Button>
+                <Link to={`/directors/${movie.Directors.Name}`}>
+                  <Button className='ms-1 mt-1' variant='info'>Director/s Details</Button>
+                </Link>
+                <Link to={`/genres/${movie.Genre.Name}`}>
+                  <Button className='ms-1 mt-1' variant='info'>Genre Details</Button>
+                </Link>
+              </Card.Footer>
             </Card>
           </Col>
         </Row>

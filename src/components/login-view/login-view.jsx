@@ -6,7 +6,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 // React-bootstrap imports 
-import { Form, Button, Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Col, Row, Form, Button, Card } from "react-bootstrap";
 
 // Custom SCSS 
 import './login-view.scss';
@@ -53,8 +53,8 @@ export function LoginView(props) {
       const data = response.data;
       props.onLoggedIn(data);
     })
-    .catch(e => {
-      console.log('no such user')
+    .catch(function (error) {
+      console.log(error);
     });
    }
   };
@@ -63,7 +63,7 @@ export function LoginView(props) {
     <Container>
       <Row>
         <Col>
-          <Card className='loginbdy'>
+          <Card className='loginbdy mt-4'>
             <Card.Body>
               <Card.Title className='login-title'>Sign In</Card.Title>
               <Form>
@@ -83,11 +83,12 @@ export function LoginView(props) {
               </Form>
             </Card.Body>
             <Card.Footer>
-              <Card.Text>Don't have an account?  <Link to='/register'>
-                <Button variant='submit' className='mb-1'>
-                 Sign up
-                </Button>
-              </Link></Card.Text>
+              <Card.Text>Don't have an account?  
+                <Link to='/register'>
+                  <Button variant='submit' className='mb-1'>
+                 Sign up</Button>
+                </Link>
+              </Card.Text>
             </Card.Footer>
           </Card>
         </Col>

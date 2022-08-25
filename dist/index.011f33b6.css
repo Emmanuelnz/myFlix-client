@@ -27,7 +27,8 @@ secondary color ()- #4ac4a8 cyan
 }
 
 .loginbdy {
-  margin: 20%;
+  margin-right: 20%;
+  margin-left: 20%;
   font-weight: 500;
 }
 /* Colors used -

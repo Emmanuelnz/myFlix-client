@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-// React-bootstrap imports 
-import { Form, Button, Card, Container, Col, Row, } from "react-bootstrap";
+// React-router imports 
+import { Link } from 'react-router-dom';
 
-// SCSS import 
+// React-bootstrap imports 
+import { Container, Col, Row, Form, Button, Card } from "react-bootstrap";
+
+// Custom SCSS 
 import './registration-view.scss';
 
 export function RegistrationView(props) {
@@ -62,7 +65,7 @@ export function RegistrationView(props) {
       .then (response => {
         const data = response.data;
         console.log(data);
-        alert('Registration successful, Welcome! Please login! ');
+        alert('Registration successful, Welcome! Please Sign in! ');
           // Second argument opens page in current tab "_self"
           window.open('/', '_self'); 
       })
@@ -108,7 +111,11 @@ export function RegistrationView(props) {
               </Form>
             </Card.Body>
             <Card.Footer>
-              <Button href='/' className='mt-2 ms-1' variant='primary' type='submit' >Sign in</Button>
+              <Card.Text>Already Registerd?
+                <Link to='/'>
+                  <Button className='mb-1' variant='submit' type='submit' >Sign in</Button>
+                </Link>
+              </Card.Text>
             </Card.Footer> 
           </Card>
         </Col>

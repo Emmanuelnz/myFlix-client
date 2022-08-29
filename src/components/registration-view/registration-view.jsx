@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import { Container, Col, Row, Form, Button, Card } from "react-bootstrap";
 
 // Custom SCSS 
-import './registration-view.scss';
+import '../registration-view/registration-view.scss';
 
 export function RegistrationView(props) {
   const [ username, setUsername ] = useState('');

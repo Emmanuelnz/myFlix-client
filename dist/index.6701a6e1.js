@@ -42252,7 +42252,7 @@ class MovieView extends _reactDefault.default.Component {
                                         })
                                     }),
                                     /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                                        to: `/genres/${movie.Genre.Name}`,
+                                        to: `/genre/${movie.Genre.Name}`,
                                         __source: {
                                             fileName: "src/components/movie-view/movie-view.jsx",
                                             lineNumber: 39
@@ -42629,15 +42629,13 @@ var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 // React-bootstrap imports
 var _reactBootstrap = require("react-bootstrap");
-// Custom SCSS
-var _genreViewScss = require("../genre-view/genre-view.scss");
 class GenreView extends _reactDefault.default.Component {
     render() {
         const { genre , onBackCLick  } = this.props;
         return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Container, {
             __source: {
                 fileName: "src/components/genre-view/genre-view.jsx",
-                lineNumber: 16
+                lineNumber: 12
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card, {
@@ -42645,15 +42643,14 @@ class GenreView extends _reactDefault.default.Component {
                 text: "light",
                 __source: {
                     fileName: "src/components/genre-view/genre-view.jsx",
-                    lineNumber: 17
+                    lineNumber: 13
                 },
                 __self: this,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Header, {
-                        className: "title",
                         __source: {
                             fileName: "src/components/genre-view/genre-view.jsx",
-                            lineNumber: 18
+                            lineNumber: 14
                         },
                         __self: this,
                         children: "Genre"
@@ -42661,65 +42658,41 @@ class GenreView extends _reactDefault.default.Component {
                     /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card.Body, {
                         __source: {
                             fileName: "src/components/genre-view/genre-view.jsx",
-                            lineNumber: 19
+                            lineNumber: 15
                         },
                         __self: this,
                         children: [
-                            /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card.Text, {
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Text, {
                                 __source: {
                                     fileName: "src/components/genre-view/genre-view.jsx",
-                                    lineNumber: 20
+                                    lineNumber: 16
                                 },
                                 __self: this,
-                                children: [
-                                    /*#__PURE__*/ _jsxRuntime.jsx("span", {
-                                        __source: {
-                                            fileName: "src/components/genre-view/genre-view.jsx",
-                                            lineNumber: 20
-                                        },
-                                        __self: this,
-                                        children: "Name:"
-                                    }),
-                                    " ",
-                                    genre.Name
-                                ]
+                                children: genre.Name
                             }),
-                            /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card.Text, {
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Text, {
                                 __source: {
                                     fileName: "src/components/genre-view/genre-view.jsx",
-                                    lineNumber: 21
+                                    lineNumber: 17
                                 },
                                 __self: this,
-                                children: [
-                                    /*#__PURE__*/ _jsxRuntime.jsx("span", {
-                                        __source: {
-                                            fileName: "src/components/genre-view/genre-view.jsx",
-                                            lineNumber: 21
-                                        },
-                                        __self: this,
-                                        children: "Description: "
-                                    }),
-                                    " ",
-                                    genre.Description
-                                ]
+                                children: genre.Description
                             })
                         ]
                     }),
                     /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Footer, {
                         __source: {
                             fileName: "src/components/genre-view/genre-view.jsx",
-                            lineNumber: 23
+                            lineNumber: 19
                         },
                         __self: this,
                         children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                            className: "mb-2",
-                            variant: "info",
                             onClick: ()=>{
                                 onBackCLick();
                             },
                             __source: {
                                 fileName: "src/components/genre-view/genre-view.jsx",
-                                lineNumber: 24
+                                lineNumber: 20
                             },
                             __self: this,
                             children: "Back"
@@ -42731,7 +42704,7 @@ class GenreView extends _reactDefault.default.Component {
     }
 }
 GenreView.proptypes = {
-    genre: _propTypesDefault.default.shape({
+    Genre: _propTypesDefault.default.shape({
         Name: _propTypesDefault.default.string.isRequired,
         Description: _propTypesDefault.default.string.isRequired
     }).isRequired
@@ -42742,7 +42715,7 @@ GenreView.proptypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","../genre-view/genre-view.scss":"3BqnD","@parcel/transformer-js/src/esmodule-helpers.js":"01T87","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6uOaN","react-bootstrap":"h2YVd"}],"3BqnD":[function() {},{}],"2E7Aw":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","@parcel/transformer-js/src/esmodule-helpers.js":"01T87","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6uOaN","react-bootstrap":"h2YVd"}],"2E7Aw":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$58c6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -43261,7 +43234,7 @@ class ProfileView extends _reactDefault.default.Component {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"01T87","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6uOaN","axios":"iYoWk","react-bootstrap":"h2YVd","../profile-view/profile-view.scss":"gb0ga","react/jsx-runtime":"8xIwr"}],"gb0ga":[function() {},{}],"6EiBJ":[function(require,module,exports) {
+},{"react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"01T87","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6uOaN","react/jsx-runtime":"8xIwr","axios":"iYoWk","react-bootstrap":"h2YVd","../profile-view/profile-view.scss":"gb0ga"}],"gb0ga":[function() {},{}],"6EiBJ":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$4249 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;

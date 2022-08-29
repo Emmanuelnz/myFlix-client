@@ -3,11 +3,14 @@ import React from 'react';
 // React-bootstrap imports 
 import { Navbar, Container, Nav, Button, Offcanvas } from 'react-bootstrap';
 
+// Custom SCSS
+import '../navbar/navbar.scss';
+
+
 export function NavBar({ user }) {
   
-  const onLoggedOut = () => {
+  onLogOut = () => {
     localStorage.clear();
-    
     window.open('/', '_self');
   }
 
@@ -36,16 +39,19 @@ export function NavBar({ user }) {
                   {isAuth() && (
                     <Nav.Link href={`/users/${user}`}>{user}</Nav.Link>
                   )}
-                  {isAuth() && (
-                    <Button variant='info' onClick={() => {
-                      this.onLoggedOut()
-                    }}>Log out</Button>
-                  )}
+
                   {!isAuth() && (
                     <Nav.Link href='/'>Sign in</Nav.Link>
                   )}
+
                   {!isAuth && (
                     <Nav.Link href='/register'>Sign up</Nav.Link>
+                  )}
+                  
+                  {isAuth() && (
+                    <Button variant='info' onClick={() => {
+                      this.onLogOut()
+                    }}>Log out</Button>
                   )}
                 </Nav>
               </Offcanvas.Body>

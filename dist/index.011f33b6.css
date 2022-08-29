@@ -31,15 +31,29 @@ secondary color ()- #4ac4a8 cyan
   margin-left: 20%;
   font-weight: 500;
 }
+
+
+.title {
+  text-align: center;
+  font-weight: 500;
+}
+
+span {
+  font-weight: 500;
+}
+span {
+  font-weight: 500;
+}
+
+
+.main-view {
+  justify-content: center;
+}
 /* Colors used -
 
 background color (also primary color) - #303a40 
 */
 html {
   background: #303a40;
-}
-
-.mview-text {
-  font-weight: 600;
 }
 /*# sourceMappingURL=index.011f33b6.css.map */

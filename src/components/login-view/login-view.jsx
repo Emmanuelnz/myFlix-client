@@ -6,10 +6,10 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 // React-bootstrap imports 
-import { Container, Col, Row, Form, Button, Card } from "react-bootstrap";
+import { Container, Col, Row, Form, Button, Card } from 'react-bootstrap';
 
 // Custom SCSS 
-import './login-view.scss';
+import '../login-view/login-view.scss';
 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
@@ -32,7 +32,7 @@ export function LoginView(props) {
       setPasswordErr('Password Required');
         isReq = false;
     }else if(password.length < 6) {
-      setPassword('Password must be at least 6 characters long');
+      setPasswordErr('Password must be at least 6 characters long');
         isReq = false;
     }
 
@@ -47,7 +47,7 @@ export function LoginView(props) {
     if (isReq) {
     axios.post('https://myflixfr.herokuapp.com/login', {
       Username: username,
-      Password: password,
+      Password: password
     })
     .then(response => {
       const data = response.data;
@@ -69,17 +69,30 @@ export function LoginView(props) {
               <Form>
                 <Form.Group>
                   <Form.Label>Username: </Form.Label>
-                  <Form.Control type='text' placeholder='Enter Username' value={username} onChange={e => setUsername(e.target.value)} /> 
+                  <Form.Control 
+                    value={username} 
+                    type='text' 
+                    placeholder='Enter Username' 
+                    onChange={e => setUsername(e.target.value)} /> 
                     {usernameErr && <p>{usernameErr}</p>}
                   </Form.Group>
 
-                <Form.Group>
+                <Form.Group >
                     <Form.Label>Password: </Form.Label>
-                    <Form.Control type='password' placeholder='Enter Password' onChange={e => setPassword(e.target.value)} /> 
+                    <Form.Control 
+                      value={password} 
+                      type='text' 
+                      placeholder='Enter Password' 
+                      onChange={e => setPassword(e.target.value)} /> 
                       {passwordErr && <p>{passwordErr}</p>}
                 </Form.Group>
                 
-                  <Button  className='mt-2' variant='primary' type='submit' onClick={handleSubmit}>Sign in</Button>
+                  <Button  
+                    className='mt-2' 
+                    variant='primary' 
+                    type='submit' 
+                    onClick={handleSubmit}>Sign in
+                  </Button>
               </Form>
             </Card.Body>
             <Card.Footer>

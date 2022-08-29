@@ -17,6 +17,9 @@ import { ProfileView } from '../profile-view/profile-view';
 // React-bootstrap imports 
 import { Row, Col } from 'react-bootstrap';
 
+// Custom SCSS
+import '../main-view/main-view.scss';
+
 export class MainView extends React.Component {
 
   constructor() {
@@ -79,7 +82,7 @@ export class MainView extends React.Component {
     return (
         <Router>
           <NavBar user={ user } />
-          <Row className='main-view gap-3 mx-auto mt-5 pt-5'>
+          <Row className='main-view gap-3 pt-5'>
             
             <Route exact path='/' render={() => {
               if (!user) return <Col>
@@ -145,7 +148,7 @@ export class MainView extends React.Component {
               </Col>
             }} />
 
-            <Route path='/genre/:name' render={({ match, history }) => {
+            <Route path='/genre/:Name' render={({ match, history }) => {
               if (!user) return <Col>
                 <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
               </Col>
@@ -153,7 +156,7 @@ export class MainView extends React.Component {
               if (movies.length === 0) return <div className='main-view' />
 
               return <Col>
-                <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} onBackClick={() => history.goBack()} />
+                <GenreView genre={movies.find(m => m.Genre.Name === match.params.Name).Genre} onBackClick={() => history.goBack()} />
               </Col>
             }} />
 

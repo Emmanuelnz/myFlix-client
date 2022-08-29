@@ -7,6 +7,9 @@ import { Link } from 'react-router-dom';
 // React-bootstrap imports 
 import { Card, Container, Col, Row, Button } from 'react-bootstrap';
 
+// Custom SCSS
+import '../movie-view/movie-view.scss';
+
 
 export class MovieView extends React.Component {
 
@@ -28,11 +31,13 @@ export class MovieView extends React.Component {
               </Card.Body>
               <Card.Footer>
                 <Button variant='info' onClick={ () => {onBackClick(); }}>Back</Button>
+
                 <Link to={`/directors/${movie.Directors.Name}`}>
-                  <Button className='ms-1 mt-1' variant='info'>Director/s Details</Button>
+                  <Button className='mx-2' variant='info'>Director/s Details</Button>
                 </Link>
+
                 <Link to={`/genres/${movie.Genre.Name}`}>
-                  <Button className='ms-1 mt-1' variant='info'>Genre Details</Button>
+                  <Button className='me-1' variant='info'>Genre Details</Button>
                 </Link>
               </Card.Footer>
             </Card>

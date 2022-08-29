@@ -4,23 +4,26 @@ import PropTypes from 'prop-types';
 // React-bootstrap imports
 import { Container, Card, Button } from 'react-bootstrap';
 
+// Custom SCSS 
+import '../directors-view/directors-view.scss';
+
 export class DirectorsView extends React.Component {
 
-  render () {
-    const { movie, onBackClick } = this.props;
+  render() {
+    const { directors, onBackClick } = this.props;
 
     return (
       <Container>
         <Card bg='dark' text='light'>
-          <Card.Body>
-            <Card.Header>Directors</Card.Header>
-              <Card.Text>{movie.Directors.Name}</Card.Text>
-              <Card.Text>{movie.Directors.Bio}</Card.Text>
-              <Card.Text>{movie.Directors.Born}</Card.Text>
-            <Card.Footer>
-              <Button onClick={() => {onBackClick();}}></Button>
-            </Card.Footer>
-          </Card.Body>
+          <Card.Header className='title'>Directors</Card.Header>
+            <Card.Body>
+              <Card.Text><span>Name:</span> {directors.Name}</Card.Text>
+              <Card.Text><span>Bio:</span> {directors.Bio}</Card.Text>
+              <Card.Text><span>Born:</span> {directors.Born}</Card.Text>
+            </Card.Body>
+          <Card.Footer>
+            <Button className='mb-2' variant='info' onClick={() => {onBackClick();}}>Back</Button>
+          </Card.Footer>
         </Card>
       </Container>
     );
@@ -29,7 +32,7 @@ export class DirectorsView extends React.Component {
 }
 
 DirectorsView.propTypes = {
-  Directors: PropTypes.shape({
+  directors: PropTypes.shape({
     Name: PropTypes.string.isRequired,
     Bio: PropTypes.string.isRequired,
     Born: PropTypes.string.isRequired

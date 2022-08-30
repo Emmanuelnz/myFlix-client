@@ -21,26 +21,48 @@ export class MovieView extends React.Component {
         <Row>
           <Col>
             <Card bg='dark' text='light'>
-              <Card.Img variant='top' crossOrigin='anonymous' src={ movie.ImagePath } />
               <Card.Body>
-                <Card.Title className='mview-title'> { movie.Title } </Card.Title>
-                <Card.Text>
-                  <span className='mview-text'>Description: </span> { movie.Description } </Card.Text>
-                <Card.Text><span className='mview-text'>Directors: </span>{ movie.Directors.Name } </Card.Text>
-                <Card.Text><span className='mview-text'>Genre: </span>{ movie.Genre.Name } </Card.Text>
+              <Card.Img variant='top' crossOrigin='anonymous' src={ movie.ImagePath } />
+                <Card.Title className='mview-title pt-2'> { movie.Title } </Card.Title>
+                  <Card.Text>
+                    <span className='mview-text'>Description: </span> 
+                    { movie.Description } 
+                  </Card.Text>
+
+                  <Card.Text>
+                    <Link to={`/directors/${movie.Directors.Name}`}>
+                      <Button 
+                        variant='outline-info'
+                        size='sm'
+                        >Director Details 
+                      </Button>
+                    </Link> - { movie.Directors.Name } 
+                  </Card.Text>
+
+                  <Card.Text>
+                    <Link to={`/genre/${movie.Genre.Name}`}>
+                      <Button  
+                        variant='outline-info'
+                        size='sm'
+                        >Genre Details 
+                      </Button>
+                    </Link> - { movie.Genre.Name } 
+                  </Card.Text>
               </Card.Body>
               <Card.Footer>
-                <Button variant='info' onClick={ () => {onBackClick(); }}>Back</Button>
-
-                <Link to={`/directors/${movie.Directors.Name}`}>
-                  <Button className='mx-2' variant='info'>Director/s Details</Button>
-                </Link>
-
-                <Link to={`/genre/${movie.Genre.Name}`}>
-                  <Button className='me-1' variant='info'>Genre Details</Button>
-                </Link>
+                <Button 
+                  variant='info' 
+                  onClick={ () => {onBackClick(); }}
+                  >« Back 
+                </Button>
+                
+                <Button
+                    className="mx-2"
+                    variant="outline-info"
+                  >Favorites + 
+                </Button>
               </Card.Footer>
-            </Card>
+            </Card> 
           </Col>
         </Row>
       </Container>
@@ -54,17 +76,6 @@ MovieView.propTypes = {
     ImagePath: PropTypes.string.isRequired,
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
-
-    Directors: PropTypes.shape ({
-      Name: PropTypes.string.isRequired,
-      Bio: PropTypes.string.isRequired,
-      Born: PropTypes.string.isRequired, 
-    }),
-
-    Genre: PropTypes.shape ({
-      Name: PropTypes.string.isRequired,
-      Description: PropTypes.string.isRequired
-    }),
   }).isRequired,
   onBackClick: PropTypes.func.isRequired
 };

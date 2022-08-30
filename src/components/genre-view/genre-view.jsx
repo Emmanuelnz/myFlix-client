@@ -6,7 +6,7 @@ import { Container, Card, Button } from 'react-bootstrap';
 
 export class GenreView extends React.Component {
   render() {
-    const { genre, onBackCLick } = this.props;
+    const { genre, onBackClick } = this.props;
     
     return (
       <Container>
@@ -17,7 +17,11 @@ export class GenreView extends React.Component {
               <Card.Text>{genre.Description}</Card.Text>
             </Card.Body>
           <Card.Footer>
-            <Button onClick={() => {onBackCLick();}} >Back</Button>
+            <Button 
+              variant='info'
+              onClick={() => {onBackClick();}} 
+              >« Back
+            </Button>
           </Card.Footer>
         </Card>
       </Container>

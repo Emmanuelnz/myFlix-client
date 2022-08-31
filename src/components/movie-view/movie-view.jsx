@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 // React-bootstrap imports 
-import { Card, Container, Col, Row, Button } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 
 // Custom SCSS
 import '../movie-view/movie-view.scss';
@@ -14,7 +14,7 @@ import '../movie-view/movie-view.scss';
 export class MovieView extends React.Component {
 
    render() {
-    const { movie, onBackClick } = this.props;
+    const { movie, onBackClick, onFavorites } = this.props;
   
     return (
       <Container fluid>
@@ -22,10 +22,27 @@ export class MovieView extends React.Component {
           <Col>
             <Card bg='dark' text='light'>
               <Card.Body>
-              <Card.Img variant='top' crossOrigin='anonymous' src={ movie.ImagePath } />
-                <Card.Title className='mview-title pt-2'> { movie.Title } </Card.Title>
-                  <Card.Text>
-                    <span className='mview-text'>Description: </span> 
+              <Card.Img 
+                variant='top' 
+                crossOrigin='anonymous' 
+                src={ movie.ImagePath } />
+                <Card.Title className='pt-1'>
+                    <Row>
+                      <Col className='mt-2'>{ movie.Title }</Col>
+
+                      <Col>
+                        <Button
+                          size='sm'
+                          className='fav-btn mt-1'
+                          variant='outline-info'
+                          onClick={() => onFavorites(movie._id, 'add')}
+                          >Favorites + 
+                        </Button>
+                      </Col>
+                    </Row>
+                  </Card.Title>
+                  <Card.Text className='mt-2'>
+                    <span className='mview-text'>Description: </span>
                     { movie.Description } 
                   </Card.Text>
 
@@ -51,15 +68,9 @@ export class MovieView extends React.Component {
               </Card.Body>
               <Card.Footer>
                 <Button 
-                  variant='info' 
+                  variant='outline-info' 
                   onClick={ () => {onBackClick(); }}
                   >« Back 
-                </Button>
-                
-                <Button
-                    className="mx-2"
-                    variant="outline-info"
-                  >Favorites + 
                 </Button>
               </Card.Footer>
             </Card> 

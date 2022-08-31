@@ -22,7 +22,7 @@ export class DirectorsView extends React.Component {
               <Card.Text><span>Born:</span> {directors.Born}</Card.Text>
             </Card.Body>
           <Card.Footer>
-            <Button className='mb-2' variant='info' onClick={() => {onBackClick();}}>« Back</Button>
+            <Button className='mb-2' variant='outline-info' onClick={() => {onBackClick();}}>« Back</Button>
           </Card.Footer>
         </Card>
       </Container>

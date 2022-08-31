@@ -31,7 +31,9 @@ secondary color ()- #4ac4a8 cyan
   margin-left: 20%;
   font-weight: 500;
 }
-
+.fav-btn {
+  float: right;
+}
 
 .title {
   text-align: center;
@@ -42,10 +44,10 @@ span {
   font-weight: 500;
 }
 
+
 .main-view {
   justify-content: center;
 }
-
 /* Colors used -
 
 background color (also primary color) - #303a40 

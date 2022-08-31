@@ -18,7 +18,7 @@ export class GenreView extends React.Component {
             </Card.Body>
           <Card.Footer>
             <Button 
-              variant='info'
+              variant='outline-info'
               onClick={() => {onBackClick();}} 
               >« Back
             </Button>
@@ -28,10 +28,3 @@ export class GenreView extends React.Component {
     );
   }
 }
-
-GenreView.proptypes = {
-  Genre: PropTypes.shape ({
-    Name: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired
-  }).isRequired
-};

@@ -17,13 +17,19 @@ export class MovieCard extends React.Component {
 
     return (
       <Card className='h-100' bg='dark' text='light'>
-        <Card.Img style={{cursor:'pointer'}} variant="top" crossOrigin='anonymous' src={movie.ImagePath} />
+        <Link to={`movies/${movie._id}`} >
+          <Card.Img 
+          style={{cursor:'pointer'}} 
+          variant="top" 
+          crossOrigin='anonymous' 
+          src={movie.ImagePath} />
+        </Link>
         <Card.Body>
           <Card.Title>{movie.Title}</Card.Title>
         </Card.Body>
         <Card.Footer>
           <Link to={`/movies/${movie._id}`}>
-            <Button variant='info'>Details</Button>
+            <Button variant='outline-info'>Details</Button>
           </Link>
         </Card.Footer>
       </Card>

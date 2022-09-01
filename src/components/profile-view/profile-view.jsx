@@ -1,9 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
-
-// React-router imports
-import { Link } from 'react-router-dom';
 
 // React-bootstrap imports 
 import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap';
@@ -145,7 +141,7 @@ export class ProfileView extends React.Component {
 
   render() {
     const { movies } = this.props;
-    const { favoriteMovies, Username, Email, Birthday, Password, onFavorites } = this.state;
+    const { Username, Email, Birthday, favoriteMovies, onFavorites } = this.state;
 
     return (
       <Container>

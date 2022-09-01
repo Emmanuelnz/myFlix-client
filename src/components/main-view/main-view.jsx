@@ -59,7 +59,7 @@ export class MainView extends React.Component {
     const Username = localStorage.getItem('user');
     const { favoriteMovies } = this.state;
     let accessToken = localStorage.getItem('token');
-    if (accessToken !== null) {
+    if (accessToken !== null && Username !== null) {
       if (action === 'add') {
         this.setState({ favoriteMovies: [...favoriteMovies, movieId] });
   
@@ -91,7 +91,8 @@ export class MainView extends React.Component {
   onLoggedIn(authData) {
     console.log(authData);
     this.setState({
-      user: authData.user.Username
+      user: authData.user.Username,
+      favoriteMovies: favoriteMovies || []
     });
   
     localStorage.setItem('token', authData.token);
@@ -171,7 +172,7 @@ export class MainView extends React.Component {
 
               return <Col>
                 <MovieView 
-                  movie={movies.find(m => m._id === match.params.movieId)} 
+                  movie={movies.find(m => m._id === match.params.movieId)}
                   onBackClick={() => history.goBack()}
                   onFavorites={this.onFavorites} />
               </Col>

@@ -18,10 +18,10 @@ export class MovieCard extends React.Component {
     return (
       <Card className='h-100' bg='dark' text='light'>
         <Link to={`movies/${movie._id}`} >
-          <Card.Img 
-          style={{cursor:'pointer'}} 
+          <Card.Img  
           variant="top" 
-          crossOrigin='anonymous' 
+          crossOrigin='anonymous'
+          style={{cursor:'pointer'}}
           src={movie.ImagePath} />
         </Link>
         <Card.Body>

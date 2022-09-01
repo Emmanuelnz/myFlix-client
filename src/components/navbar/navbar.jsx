@@ -1,7 +1,7 @@
 import React from 'react';
 
 // React-bootstrap imports 
-import { Navbar, Container, Nav, Button, Offcanvas } from 'react-bootstrap';
+import { Navbar, Container, Nav, Button, Offcanvas, Col, Row } from 'react-bootstrap';
 
 // Custom SCSS
 import '../navbar/navbar.scss';
@@ -46,12 +46,12 @@ export function NavBar({ user }) {
               </Offcanvas.Title>
             </Offcanvas.Header>
               <Offcanvas.Body>
-                <Nav className='ms-auto'>
+                <Nav>
                   {isAuth() && (
                     <Button 
-                    variant='outline-dark'
-                    href={`/users/${user}`}>
-                      {user}
+                      variant='dark'
+                      href={`/users/${user}`}
+                      >{user}
                     </Button>
                   )}
 
@@ -62,10 +62,9 @@ export function NavBar({ user }) {
                   {!isAuth && (
                     <Nav.Link href='/register'>Sign up</Nav.Link>
                   )}
-                  
+                  <Col className='mt-2'></Col>
                   {isAuth() && (
                     <Button
-                      className='mt-3'
                       variant='dark' 
                       onClick={() => {this.onLogOut()}}
                       >Log out

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 // React-bootstrap imports 
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, Figure } from 'react-bootstrap';
 
 // Custom SCSS
 import '../movie-view/movie-view.scss';
@@ -22,14 +22,12 @@ export class MovieView extends React.Component {
           <Col>
             <Card bg='dark' text='light'>
               <Card.Body>
-              <Card.Img 
-                variant='top' 
+              <Card.Img
                 crossOrigin='anonymous' 
                 src={ movie.ImagePath } />
                 <Card.Title className='pt-1'>
                     <Row>
                       <Col className='mt-2'>{ movie.Title }</Col>
-
                       <Col>
                         <Button
                           size='sm'

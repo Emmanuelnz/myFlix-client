@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 // React-bootstrap imports 
-import { Container, Row, Col, Card, Button, Figure } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, } from 'react-bootstrap';
 
 // Custom SCSS
 import '../movie-view/movie-view.scss';

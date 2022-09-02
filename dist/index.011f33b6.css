@@ -35,10 +35,6 @@ secondary color ()- #4ac4a8 cyan
   float: right;
 }
 
-.Card {
-  height: 50%;
-}
-
 .title {
   text-align: center;
   font-weight: 500;

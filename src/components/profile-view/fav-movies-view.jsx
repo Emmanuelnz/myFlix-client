@@ -1,15 +1,20 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
+// React-router imports
+import { Link } from "react-router-dom";
+
 // React-bootstrap imports 
-import { Button, Card, Col, } from "react-bootstrap";
+import { Col, Card, Button, } from "react-bootstrap";
 
 // Custom SCSS 
 import '../profile-view/profile-view.scss'
 
 export class FavMoviesView extends React.Component {
+
+
   render() {
-    const { movie, onFavorites } = this.props;
+    const { movie, onFavorites, } = this.props;
 
     return (
       <Col>
@@ -25,10 +30,13 @@ export class FavMoviesView extends React.Component {
             <Card.Title>{movie.Title}</Card.Title>
           </Card.Body>
           <Card.Footer>
+            <Link to={`/movies/${movie._id}`}>
+              <Button className="me-2" variant='outline-info'>Details</Button>
+            </Link>
             <Button
               variant="outline-info"
               onClick={() => onFavorites(movie._id, 'remove')}
-              >Remove from Favorites +
+              >Remove from Favorites
             </Button>
           </Card.Footer>
         </Card>
@@ -40,6 +48,6 @@ export class FavMoviesView extends React.Component {
 FavMoviesView.propTypes = {
   movie: PropTypes.shape({
     ImagePath: PropTypes.string.isRequired,
-    Title: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
   }).isRequired,
 };

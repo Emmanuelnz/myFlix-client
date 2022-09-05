@@ -6,7 +6,7 @@ import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap';
 
 // Custom SCSS
 import '../profile-view/profile-view.scss';
-import { FavMoviesView } from './user-favorites';
+import { FavMoviesView } from './fav-movies-view';
 
 export class ProfileView extends React.Component {
   constructor() {
@@ -26,24 +26,6 @@ export class ProfileView extends React.Component {
     this.getUser(accessToken);
   }
 
-  removeFavorite = (e, movie) => {
-    const username = localStorage.getItem('user');
-    console.log(username);
-    
-    const token = localStorage.getItem('token');
-    console.log(this.props);
-    axios.delete(`https://myflixfr.herokuapp.com/users/${Username}/movies/${movie._id}`,
-        {headers: { Authorization: `Bearer ${token}` }})
-      .then((response) => {
-        console.log(response);
-        alert('Successfully removed from favorites.');
-        this.componentDidMount();
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-
   getUser = (token) => {
     const Username = localStorage.getItem('user');
     axios.get(`https://myflixfr.herokuapp.com/users/${Username}`, 
@@ -54,7 +36,7 @@ export class ProfileView extends React.Component {
           Password: response.data.Password,
           Email: response.data.Email,
           Birthday: response.data.Birthday,
-          FavoriteMovies: response.data.FavoriteMovies,
+          favoriteMovies: response.data.favoriteMovies,
         });
       })
       .catch(function (error) {
@@ -140,7 +122,7 @@ export class ProfileView extends React.Component {
   }
 
   render() {
-    const { movies } = this.props;
+    const { movies, movie } = this.props;
     const { Username, Email, Birthday, favoriteMovies, onFavorites } = this.state;
 
     return (
@@ -238,22 +220,21 @@ export class ProfileView extends React.Component {
         <Card className='mt-3' bg='dark' text='light'>
           <Card.Body>
           <Card.Title>Favorite Movies</Card.Title>
-          {favoriteMovies.length !== 0 ? (
-            <Row>
-              {favoriteMovies.map((movieId) => {
-                let movie = movies.find((m) => m.id === movieId);
+            {favoriteMovies.length !== 0 ? (
+              <Row>
+              {favoriteMovies.map((movieId, movie) => {
                 return (
-                 <FavMoviesView 
+                  <FavMoviesView 
                     key={movieId}
                     movie={movie}
-                    onFavorites={onFavorites}
+                    onFavorites={onFavorites} 
                   />
                 )
               })}
-            </Row>
-          ) : (
-            <Card.Text>Looks kinda empty in here :/</Card.Text>
-          )}
+              </Row>
+            ) : (
+              <Card.Text>Looks kinda empty in here :/</Card.Text>
+            )}
           </Card.Body>
         </Card>
       </Container>

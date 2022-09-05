@@ -159,13 +159,11 @@ export class MainView extends React.Component {
                 onFavorites={this.onFavorites} />
             }} />
 
-            <Route path={`/users/${user}`} render={({ match, history }) => {
+            <Route path={`/users-/${user}`} render={({ match, history }) => {
               if (!user) return <Redirect to="/" />
-              return movies.map(m => (
-                <Col lg={2} md={3} sm={5} key={m._id}>
-                <FavMoviesView key={m._id} movie={m} />
+              return <Col lg={2} md={3} sm={5} >
+                <FavMoviesView  />
               </Col>
-              ))
             }} />
 
             <Route path='/movies/:movieId' render={({ match, history }) => {

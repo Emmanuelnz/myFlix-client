@@ -22940,9 +22940,7 @@ class MainView extends _reactDefault.default.Component {
                                 return(/*#__PURE__*/ _jsxRuntime.jsx(_profileView.ProfileView, {
                                     history: history,
                                     movies: movies,
-                                    user: user === match.params.username,
-                                    favoriteMovies: favoriteMovies || [],
-                                    onFavorites: this.onFavorites
+                                    user: user
                                 }));
                             },
                             __source: {
@@ -22967,7 +22965,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 162
+                                lineNumber: 161
                             },
                             __self: this
                         }),
@@ -22992,7 +22990,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 169
+                                lineNumber: 168
                             },
                             __self: this
                         }),
@@ -23015,7 +23013,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 182
+                                lineNumber: 181
                             },
                             __self: this
                         }),
@@ -23038,7 +23036,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 192
+                                lineNumber: 191
                             },
                             __self: this
                         })

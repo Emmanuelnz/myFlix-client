@@ -48,6 +48,6 @@ export class FavMoviesView extends React.Component {
 FavMoviesView.propTypes = {
   movie: PropTypes.shape({
     ImagePath: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
+    Title: PropTypes.string.isRequired,
   }).isRequired,
 };

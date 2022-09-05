@@ -154,9 +154,8 @@ export class MainView extends React.Component {
               return <ProfileView 
                 history={history} 
                 movies={movies}
-                user={user === match.params.username}
-                favoriteMovies={favoriteMovies || []}
-                onFavorites={this.onFavorites} />
+                user={user} 
+                />
             }} />
 
             <Route path={`/users-/${user}`} render={({ match, history }) => {

@@ -22952,17 +22952,18 @@ class MainView extends _reactDefault.default.Component {
                             __self: this
                         }),
                         /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
-                            path: `/users/${user}`,
+                            path: `/users-/${user}`,
                             render: ({ match , history  })=>{
                                 if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Redirect, {
                                     to: "/"
                                 }));
-                                return movies.map((m)=>/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
-                                        children: /*#__PURE__*/ _jsxRuntime.jsx(_favMoviesView.FavMoviesView, {
-                                            movie: m
-                                        }, m._id)
+                                return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
+                                    lg: 2,
+                                    md: 3,
+                                    sm: 5,
+                                    children: /*#__PURE__*/ _jsxRuntime.jsx(_favMoviesView.FavMoviesView, {
                                     })
-                                );
+                                }));
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
@@ -22991,7 +22992,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 171
+                                lineNumber: 169
                             },
                             __self: this
                         }),
@@ -23014,7 +23015,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 184
+                                lineNumber: 182
                             },
                             __self: this
                         }),
@@ -23037,7 +23038,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 194
+                                lineNumber: 192
                             },
                             __self: this
                         })
@@ -43407,7 +43408,7 @@ class FavMoviesView extends _reactDefault.default.Component {
 FavMoviesView.propTypes = {
     movie: _propTypesDefault.default.shape({
         ImagePath: _propTypesDefault.default.string.isRequired,
-        title: _propTypesDefault.default.string.isRequired
+        Title: _propTypesDefault.default.string.isRequired
     }).isRequired
 };
 

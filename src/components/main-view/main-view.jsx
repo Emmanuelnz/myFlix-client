@@ -20,6 +20,7 @@ import { Row, Col } from 'react-bootstrap';
 
 // Custom SCSS
 import '../main-view/main-view.scss';
+import { FavMoviesView } from '../profile-view/fav-movies-view';
 
 export class MainView extends React.Component {
 
@@ -59,7 +60,8 @@ export class MainView extends React.Component {
     const Username = localStorage.getItem('user');
     const { favoriteMovies } = this.state;
     let accessToken = localStorage.getItem('token');
-    if (accessToken !== null && Username !== null) {
+    if (accessToken !== null) {
+      // Add to Favorites
       if (action === 'add') {
         this.setState({ favoriteMovies: [...favoriteMovies, movieId] });
   
@@ -72,9 +74,10 @@ export class MainView extends React.Component {
           console.log(error);
         });
       } 
+      // Remove from favorites
         else if (action === 'remove') {
           this.setState({
-            favoriteMovies: favoriteMovies.filter((id) => id !== movieId)
+            favoriteMovies: favoriteMovies.filter((id) => id !== movieId),
           });
           axios.delete(`https://myflixfr.herokuapp.com/users/${Username}/movies/${movieId}`,
           {headers: { Authorization: `Bearer ${accessToken}`}})
@@ -143,26 +146,26 @@ export class MainView extends React.Component {
               )
             }} />
     
-            <Route path={`/users/${user}`} render={({ history, match }) => {
+            <Route path={`/users/${user}`} render={({ match, history }) => {
               if (!user) return <Redirect to='/' />
 
               if (movies.length === 0) return <div className='main-view' />;
 
               return <ProfileView 
                 history={history} 
-                movies={movies} 
+                movies={movies}
                 user={user === match.params.username}
                 favoriteMovies={favoriteMovies || []}
                 onFavorites={this.onFavorites} />
             }} />
 
-            <Route path={`/users-update/${user}`} render={({ match, history }) => {
+            <Route path={`/users/${user}`} render={({ match, history }) => {
               if (!user) return <Redirect to="/" />
-              return (
-              <Col>
-                <UserUpdate user={user} onBackClick={() => history.goBack()} />
+              return movies.map(m => (
+                <Col lg={2} md={3} sm={5} key={m._id}>
+                <FavMoviesView key={m._id} movie={m} />
               </Col>
-              )
+              ))
             }} />
 
             <Route path='/movies/:movieId' render={({ match, history }) => {

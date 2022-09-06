@@ -122,8 +122,8 @@ export class ProfileView extends React.Component {
   }
 
   render() {
-    const { movies, movie } = this.props;
-    const { Username, Email, Birthday, favoriteMovies, onFavorites } = this.state;
+    const { movies, onFavorites } = this.props;
+    const { Username, Email, Birthday, favoriteMovies, } = this.state;
 
     return (
       <Container>
@@ -222,10 +222,9 @@ export class ProfileView extends React.Component {
           <Card.Title>Favorite Movies</Card.Title>
             {favoriteMovies.length !== 0 ? (
               <Row>
-              {favoriteMovies.map((movieId, movie) => {
+              {favoriteMovies.map((movie) => {
                 return (
                   <FavMoviesView 
-                    key={movieId}
                     movie={movie}
                     onFavorites={onFavorites} 
                   />

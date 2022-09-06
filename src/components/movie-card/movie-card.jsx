@@ -10,8 +10,8 @@ import { Card, Button } from "react-bootstrap";
 // Custom SCSS
 import '../movie-card/movie-card.scss';
 
-
 export class MovieCard extends React.Component {
+  
   render() {
     const { movie } = this.props;
 

@@ -35,6 +35,8 @@ secondary color ()- #4ac4a8 cyan
   float: right;
 }
 
+
+
 .title {
   text-align: center;
   font-weight: 500;
@@ -43,8 +45,6 @@ secondary color ()- #4ac4a8 cyan
 span {
   font-weight: 500;
 }
-
-
 .main-view {
   justify-content: center;
 }

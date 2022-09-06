@@ -160,6 +160,7 @@ export class MainView extends React.Component {
 
             <Route path={`/users-/${user}`} render={({ match, history }) => {
               if (!user) return <Redirect to="/" />
+
               return <Col lg={2} md={3} sm={5} >
                 <FavMoviesView  />
               </Col>

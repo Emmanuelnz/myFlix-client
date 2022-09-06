@@ -12,7 +12,6 @@ import '../profile-view/profile-view.scss'
 
 export class FavMoviesView extends React.Component {
 
-
   render() {
     const { movie, onFavorites, } = this.props;
 

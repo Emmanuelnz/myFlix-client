@@ -34,9 +34,29 @@ secondary color ()- #4ac4a8 cyan
 .fav-btn {
   float: right;
 }
+.movie-card {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
+.favorites-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
+.remove-btn {
+  float: right;
+}
 
+.del-btn {
+  float: right;
+}
+
+.favorites {
+  justify-content: center;
+}
 .title {
   text-align: center;
   font-weight: 500;

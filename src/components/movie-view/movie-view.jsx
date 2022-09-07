@@ -14,7 +14,7 @@ import '../movie-view/movie-view.scss';
 export class MovieView extends React.Component {
 
    render() {
-    const { movie, onBackClick, onFavorites } = this.props;
+    const { movie, onBackClick, addFavorite } = this.props;
   
     return (
       <Container fluid>
@@ -33,7 +33,7 @@ export class MovieView extends React.Component {
                           size='sm'
                           className='fav-btn mt-1'
                           variant='outline-info'
-                          onClick={() => onFavorites(movie._id, 'add')}
+                          onClick={() => addFavorite(movie)}
                           >Favorites + 
                         </Button>
                       </Col>

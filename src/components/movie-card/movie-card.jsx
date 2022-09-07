@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 // React-bootstrap imports
-import { Card, Button } from "react-bootstrap";
+import { Col, Card, Button } from "react-bootstrap";
 
 // Custom SCSS
 import '../movie-card/movie-card.scss';
@@ -16,26 +16,28 @@ export class MovieCard extends React.Component {
     const { movie } = this.props;
 
     return (
-      <Card className='h-100' bg='dark' text='light'>
-        <Link to={`movies/${movie._id}`} >
-          <Card.Img  
-          variant="top" 
-          crossOrigin='anonymous'
-          style={{cursor:'pointer'}}
-          src={movie.ImagePath} />
-        </Link>
-        <Card.Body>
-          <Card.Title>{movie.Title}</Card.Title>
-        </Card.Body>
-        <Card.Footer>
-          <Link to={`/movies/${movie._id}`}>
-            <Button variant='outline-info'>Details</Button>
+      <Col>
+        <Card bg='dark' text='light'>
+          <Link to={`movies/${movie._id}`} >
+            <Card.Img 
+              variant='top' 
+              crossOrigin='anonymous'
+              src={movie.ImagePath} 
+              />
           </Link>
-        </Card.Footer>
-      </Card>
-    );
+          <Card.Body style={{ height: '5rem'}}>
+            <Card.Title className='movie-card'>{movie.Title}</Card.Title>
+          </Card.Body>
+          <Card.Footer>
+            <Link to={`/movies/${movie._id}`}>
+              <Button variant='outline-info'>Details</Button>
+            </Link>
+          </Card.Footer>
+        </Card>
+      </Col>
+      );
+    }
   }
-}
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({

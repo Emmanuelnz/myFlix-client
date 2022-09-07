@@ -1,12 +1,13 @@
 import React from 'react';
 import axios from 'axios';
+// React-router imports
+import { Link } from 'react-router-dom';
 
 // React-bootstrap imports 
 import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap';
 
 // Custom SCSS
 import '../profile-view/profile-view.scss';
-import { FavMoviesView } from './fav-movies-view';
 
 export class ProfileView extends React.Component {
   constructor() {
@@ -122,8 +123,16 @@ export class ProfileView extends React.Component {
   }
 
   render() {
-    const { movies, onFavorites } = this.props;
-    const { Username, Email, Birthday, favoriteMovies, } = this.state;
+    const { movies, removeFavorite, } = this.props;
+    const { Username, Email, Birthday, } = this.state;
+    
+    const favoriteMoviesList = movies.filter((movie) => {
+      return this.state.favoriteMovies.includes(movie._id);
+    });
+
+    if (!Username) {
+      return null;
+    }
 
     return (
       <Container>
@@ -145,7 +154,7 @@ export class ProfileView extends React.Component {
               <Card.Header>
                 Edit Profile
                 <Button
-                  className='ms-1'
+                  className='del-btn ms-1'
                   size='sm'
                   variant='outline-danger'
                   onClick={() => this.deleteUser()}
@@ -208,7 +217,7 @@ export class ProfileView extends React.Component {
                       variant='outline-info'
                       type='submit'
                       onClick={() => this.updateUser}
-                      >Update User
+                      >Update info
                     </Button>
                   </Form.Group>
                 </Form>
@@ -217,25 +226,55 @@ export class ProfileView extends React.Component {
           </Col>
         </Row>
         {/*=============================  FAVORITE MOVIES  =============================*/}
-        <Card className='mt-3' bg='dark' text='light'>
-          <Card.Body>
-          <Card.Title>Favorite Movies</Card.Title>
-            {favoriteMovies.length !== 0 ? (
-              <Row>
-              {favoriteMovies.map((movie) => {
-                return (
-                  <FavMoviesView 
-                    movie={movie}
-                    onFavorites={onFavorites} 
-                  />
-                )
-              })}
-              </Row>
-            ) : (
-              <Card.Text>Looks kinda empty in here :/</Card.Text>
-            )}
-          </Card.Body>
-        </Card>
+        <Row className='mt-3'>
+          <Col>
+            <Card bg='dark' text='light'>
+              <Card.Title className='p-3 ps-2'>Favorite Movies</Card.Title>
+            </Card>
+          </Col>
+        </Row>
+          
+        <Row 
+          className='favorites mt-2 gap-2' 
+          lg={6} 
+          md={3}
+          sm={3}
+           >
+          {favoriteMoviesList.map((movie) => {
+            return (
+              <div key={movie._id}>
+                <Card bg='dark' text='light'>
+                    <Link to={`/movies/${movie._id}`}>
+                      <Card.Img
+                        variant='top'
+                        crossOrigin='anonymous'
+                        src={movie.ImagePath}
+                        style={{ minHeight: '15rem', maxHeight: '30rem' }}
+                        />
+                    </Link>
+                  <Card.Body>
+                    <Col>
+                      <Card.Title className='favorites-title mt-2'>{movie.Title}</Card.Title>
+                    </Col>     
+                  </Card.Body>
+                  <Card.Footer className='mb-1'>
+                    <Link to={`/movies/${movie._id}`}>
+                      <Button variant='outline-info' size='sm'>Details</Button>
+                    </Link>
+                  
+                    <Button
+                      className='remove-btn'
+                      size='sm'
+                      variant='outline-info'
+                      onClick={() => removeFavorite(movie)}
+                      >Remove 
+                    </Button>
+                  </Card.Footer>
+                </Card>
+              </div>
+              );
+            })}
+          </Row>
       </Container>
     );
   }

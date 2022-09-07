@@ -11,9 +11,13 @@ import { Col, Card, Button, } from "react-bootstrap";
 import '../profile-view/profile-view.scss'
 
 export class FavMoviesView extends React.Component {
-
+  
   render() {
-    const { movie, onFavorites, } = this.props;
+    const { movie, onFavorites, movies, favoriteMovies } = this.props;
+
+    // const favoriteMoviesId = favoriteMovies.map(m = m._id)
+
+    // const userFavorites = movies.filter(m => m._id === favoriteMoviesId)
 
     return (
       <Col>

@@ -11,7 +11,6 @@ import { LoginView } from '../login-view/login-view';
 import { ProfileView } from '../profile-view/profile-view'; 
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
-import { FavMoviesView } from '../profile-view/fav-movies-view';
 import { DirectorsView } from '../directors-view/directors-view';
 import { GenreView } from '../genre-view/genre-view';
 
@@ -55,40 +54,39 @@ export class MainView extends React.Component {
     });
   }
 
-  onFavorites = (movieId, action) => {
+  addFavorite(movie) {
+    const token = localStorage.getItem("token");
+    const username = localStorage.getItem('user');
+
+    axios.post( `https://myflixfr.herokuapp.com/users/${username}/movies/${movie._id}`, "", 
+      {headers: { Authorization: `Bearer ${token}` }}
+      )
+      .then((response) => {
+        console.log(response);
+        alert('Successfully added to favorite list!');
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  removeFavorite = (movie) => {
     const Username = localStorage.getItem('user');
+    const accessToken = localStorage.getItem('token');
     const { favoriteMovies } = this.state;
-    let accessToken = localStorage.getItem('token');
-    if (accessToken !== null && Username !== null) {
-      // Add to Favorites
-      if (action === 'add') {
-        this.setState({ favoriteMovies: [...favoriteMovies, movieId] });
-        axios.post(`https://myflixfr.herokuapp.com/users/${Username}/movies/${movieId}`, 
-        {headers: { Authorization: `Bearer ${accessToken}`}}
-        )
-        .then(response => {
-          console.log(`Succesfully added movie to favorites`);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-      } 
-      // Remove from favorites
-        else if (action === 'remove') {
-          this.setState({
-            favoriteMovies: favoriteMovies.filter((id) => id !== movieId),
-          });
-          axios.delete(`https://myflixfr.herokuapp.com/users/${Username}/movies/${movieId}`,
-          {headers: { Authorization: `Bearer ${accessToken}`}}
-          )
-          .then(response => {
-            console.log('Succesfully removed movie from favorites');
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      }
-    }
+      this.setState({
+        favoriteMovies: favoriteMovies.filter((id) => id !== movieId),
+      });
+      axios.delete(`https://myflixfr.herokuapp.com/users/${Username}/movies/${movie._id}`,
+      {headers: { Authorization: `Bearer ${accessToken}`}}
+      )
+      .then(response => {
+        console.log('Succesfully removed movie from favorites');
+        window.open(`${Username}`, "_self");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   onLoggedIn(authData) {
@@ -155,20 +153,8 @@ export class MainView extends React.Component {
                 history={history} 
                 movies={movies}
                 user={user}
+                removeFavorite={this.removeFavorite}
                 />
-            }} />
-
-            <Route path={`/users/${user}`} render={({ match, history }) => {
-              if (!user) return <Redirect to="/" />
-
-              return movies.map(m => (
-                <Col lg={2} md={3} sm={5} key={m._id}>
-                  <FavMoviesView 
-                    movie={m}
-                    onFavorites={this.onFavorites} 
-                  />
-                </Col>
-              ))
             }} />
 
             <Route path='/movies/:movieId' render={({ match, history }) => {
@@ -180,7 +166,7 @@ export class MainView extends React.Component {
                 <MovieView 
                   movie={movies.find(m => m._id === match.params.movieId)}
                   onBackClick={() => history.goBack()}
-                  onFavorites={this.onFavorites} 
+                  addFavorite={this.addFavorite} 
                   />
               </Col>
             }} />

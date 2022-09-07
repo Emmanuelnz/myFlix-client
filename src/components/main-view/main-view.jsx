@@ -11,6 +11,7 @@ import { LoginView } from '../login-view/login-view';
 import { ProfileView } from '../profile-view/profile-view'; 
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
+import { FavMoviesView } from '../profile-view/fav-movies-view';
 import { DirectorsView } from '../directors-view/directors-view';
 import { GenreView } from '../genre-view/genre-view';
 
@@ -20,8 +21,6 @@ import { Row, Col } from 'react-bootstrap';
 
 // Custom SCSS
 import '../main-view/main-view.scss';
-import { FavMoviesView } from '../profile-view/fav-movies-view';
-
 export class MainView extends React.Component {
 
   constructor() {
@@ -60,13 +59,13 @@ export class MainView extends React.Component {
     const Username = localStorage.getItem('user');
     const { favoriteMovies } = this.state;
     let accessToken = localStorage.getItem('token');
-    if (accessToken !== null) {
+    if (accessToken !== null && Username !== null) {
       // Add to Favorites
       if (action === 'add') {
         this.setState({ favoriteMovies: [...favoriteMovies, movieId] });
-  
         axios.post(`https://myflixfr.herokuapp.com/users/${Username}/movies/${movieId}`, 
-        {headers: { Authorization: `Bearer ${accessToken}`}})
+        {headers: { Authorization: `Bearer ${accessToken}`}}
+        )
         .then(response => {
           console.log(`Succesfully added movie to favorites`);
         })
@@ -80,7 +79,8 @@ export class MainView extends React.Component {
             favoriteMovies: favoriteMovies.filter((id) => id !== movieId),
           });
           axios.delete(`https://myflixfr.herokuapp.com/users/${Username}/movies/${movieId}`,
-          {headers: { Authorization: `Bearer ${accessToken}`}})
+          {headers: { Authorization: `Bearer ${accessToken}`}}
+          )
           .then(response => {
             console.log('Succesfully removed movie from favorites');
           })
@@ -113,7 +113,7 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { movies, user, favoriteMovies } = this.state;
+    const { movies, user, } = this.state;
 
     return (
         <Router>
@@ -154,16 +154,21 @@ export class MainView extends React.Component {
               return <ProfileView 
                 history={history} 
                 movies={movies}
-                user={user} 
+                user={user}
                 />
             }} />
 
-            <Route path={`/users-/${user}`} render={({ match, history }) => {
+            <Route path={`/users/${user}`} render={({ match, history }) => {
               if (!user) return <Redirect to="/" />
 
-              return <Col lg={2} md={3} sm={5} >
-                <FavMoviesView  />
-              </Col>
+              return movies.map(m => (
+                <Col lg={2} md={3} sm={5} key={m._id}>
+                  <FavMoviesView 
+                    movie={m}
+                    onFavorites={this.onFavorites} 
+                  />
+                </Col>
+              ))
             }} />
 
             <Route path='/movies/:movieId' render={({ match, history }) => {
@@ -175,7 +180,8 @@ export class MainView extends React.Component {
                 <MovieView 
                   movie={movies.find(m => m._id === match.params.movieId)}
                   onBackClick={() => history.goBack()}
-                  onFavorites={this.onFavorites} />
+                  onFavorites={this.onFavorites} 
+                  />
               </Col>
             }} />
 

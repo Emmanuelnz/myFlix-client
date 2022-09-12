@@ -22836,8 +22836,7 @@ class MainView extends _reactDefault.default.Component {
     onLoggedIn(authData) {
         console.log(authData);
         this.setState({
-            user: authData.user.Username,
-            favoriteMovies: favoriteMovies || []
+            user: authData.user.Username
         });
         localStorage.setItem('token', authData.token);
         localStorage.setItem('user', authData.user.Username);
@@ -22856,7 +22855,7 @@ class MainView extends _reactDefault.default.Component {
         return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 117
+                lineNumber: 116
             },
             __self: this,
             children: [
@@ -22864,7 +22863,7 @@ class MainView extends _reactDefault.default.Component {
                     user: user,
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 118
+                        lineNumber: 117
                     },
                     __self: this
                 }),
@@ -22872,7 +22871,7 @@ class MainView extends _reactDefault.default.Component {
                     className: "main-view gap-3 pt-5",
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 119
+                        lineNumber: 118
                     },
                     __self: this,
                     children: [
@@ -22900,7 +22899,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 121
+                                lineNumber: 120
                             },
                             __self: this
                         }),
@@ -22917,7 +22916,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 138
+                                lineNumber: 137
                             },
                             __self: this
                         }),
@@ -22939,7 +22938,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 147
+                                lineNumber: 146
                             },
                             __self: this
                         }),
@@ -22964,7 +22963,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 160
+                                lineNumber: 159
                             },
                             __self: this
                         }),
@@ -22987,7 +22986,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 174
+                                lineNumber: 173
                             },
                             __self: this
                         }),
@@ -23010,7 +23009,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 184
+                                lineNumber: 183
                             },
                             __self: this
                         })
@@ -42461,7 +42460,7 @@ function NavBar({ user  }) {
                                     isAuth() && /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
                                         variant: "dark",
                                         onClick: ()=>{
-                                            this.onLogOut();
+                                            onLogOut();
                                         },
                                         __source: {
                                             fileName: "src/components/navbar/navbar.jsx",

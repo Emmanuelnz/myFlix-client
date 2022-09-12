@@ -42329,7 +42329,7 @@ var _reactBootstrap = require("react-bootstrap");
 // Custom SCSS
 var _navbarScss = require("../navbar/navbar.scss");
 function NavBar({ user  }) {
-    onLogOut = ()=>{
+    const onLogOut = ()=>{
         localStorage.clear();
         window.open('/', '_self');
     };

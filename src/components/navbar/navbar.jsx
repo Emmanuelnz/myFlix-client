@@ -9,7 +9,7 @@ import '../navbar/navbar.scss';
 
 export function NavBar({ user }) {
   
-  onLogOut = () => {
+ const onLogOut = () => {
     localStorage.clear();
     window.open('/', '_self');
   }
@@ -66,7 +66,7 @@ export function NavBar({ user }) {
                   {isAuth() && (
                     <Button
                       variant='dark' 
-                      onClick={() => {this.onLogOut()}}
+                      onClick={() => {onLogOut()}}
                       >Log out
                     </Button>
                   )}

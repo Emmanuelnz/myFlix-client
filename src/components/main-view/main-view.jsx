@@ -93,7 +93,6 @@ export class MainView extends React.Component {
     console.log(authData);
     this.setState({
       user: authData.user.Username,
-      favoriteMovies: favoriteMovies || []
     });
   
     localStorage.setItem('token', authData.token);

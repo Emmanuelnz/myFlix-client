@@ -94,6 +94,25 @@ export class ProfileView extends React.Component {
       });
   }
 
+  removeFavorite = (movie) => {
+    const Username = localStorage.getItem('user');
+    const accessToken = localStorage.getItem('token');
+    const { favoriteMovies } = this.state;
+      this.setState({
+        favoriteMovies: favoriteMovies.filter((id) => id !== movie),
+      });
+      axios.delete(`https://myflixfr.herokuapp.com/users/${Username}/movies/${movie._id}`,
+      {headers: { Authorization: `Bearer ${accessToken}`}}
+      )
+      .then(response => {
+        console.log('Succesfully removed movie from favorites');
+        window.open(`${Username}`, "_self");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   setUsername(value) {
     this.setState({
       Username: value,
@@ -123,7 +142,7 @@ export class ProfileView extends React.Component {
   }
 
   render() {
-    const { movies, removeFavorite, } = this.props;
+    const { movies, } = this.props;
     const { Username, Email, Birthday, } = this.state;
     
     const favoriteMoviesList = movies.filter((movie) => {
@@ -266,7 +285,7 @@ export class ProfileView extends React.Component {
                       className='remove-btn'
                       size='sm'
                       variant='outline-info'
-                      onClick={() => removeFavorite(movie)}
+                      onClick={() => this.removeFavorite(movie)}
                       >Remove 
                     </Button>
                   </Card.Footer>

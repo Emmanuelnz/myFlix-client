@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 
 // React-router imports
@@ -13,8 +14,24 @@ import '../movie-view/movie-view.scss';
 
 export class MovieView extends React.Component {
 
+  addFavorite(movie) {
+    const token = localStorage.getItem("token");
+    const username = localStorage.getItem('user');
+
+    axios.post( `https://myflixfr.herokuapp.com/users/${username}/movies/${movie._id}`, "", 
+      {headers: { Authorization: `Bearer ${token}` }}
+      )
+      .then((response) => {
+        console.log(response);
+        alert('Successfully added to favorite list!');
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
    render() {
-    const { movie, onBackClick, addFavorite } = this.props;
+    const { movie, onBackClick, } = this.props;
   
     return (
       <Container fluid>
@@ -33,7 +50,7 @@ export class MovieView extends React.Component {
                           size='sm'
                           className='fav-btn mt-1'
                           variant='outline-info'
-                          onClick={() => addFavorite(movie)}
+                          onClick={() => this.addFavorite(movie)}
                           >Favorites + 
                         </Button>
                       </Col>

@@ -54,41 +54,6 @@ export class MainView extends React.Component {
     });
   }
 
-  addFavorite(movie) {
-    const token = localStorage.getItem("token");
-    const username = localStorage.getItem('user');
-
-    axios.post( `https://myflixfr.herokuapp.com/users/${username}/movies/${movie._id}`, "", 
-      {headers: { Authorization: `Bearer ${token}` }}
-      )
-      .then((response) => {
-        console.log(response);
-        alert('Successfully added to favorite list!');
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-
-  removeFavorite = (movie) => {
-    const Username = localStorage.getItem('user');
-    const accessToken = localStorage.getItem('token');
-    const { favoriteMovies } = this.state;
-      this.setState({
-        favoriteMovies: favoriteMovies.filter((id) => id !== movieId),
-      });
-      axios.delete(`https://myflixfr.herokuapp.com/users/${Username}/movies/${movie._id}`,
-      {headers: { Authorization: `Bearer ${accessToken}`}}
-      )
-      .then(response => {
-        console.log('Succesfully removed movie from favorites');
-        window.open(`${Username}`, "_self");
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-
   onLoggedIn(authData) {
     console.log(authData);
     this.setState({
@@ -98,15 +63,6 @@ export class MainView extends React.Component {
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token);
-  }
-
-  onLoggedOut() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    this.setState({
-      user: null,
-    });
-    window.open("/", "_self");
   }
 
   render() {

@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
+// Redux
+import { connect } from 'react-redux';
+import { setUser } from '../../actions/actions';
+
 // React-router imports 
 import { Link } from 'react-router-dom';
 
@@ -52,6 +56,7 @@ export function LoginView(props) {
     .then(response => {
       const data = response.data;
       props.onLoggedIn(data);
+      props.setUser(username);
     })
     .catch(function (error) {
       console.log(error);
@@ -110,6 +115,10 @@ export function LoginView(props) {
   );
 }
 
+let mapStateToProps = state => {
+  return { user: state.user }
+}
+
 LoginView.propTypes = {
   user: PropTypes.shape({
     username: PropTypes.string.isRequired,
@@ -117,3 +126,5 @@ LoginView.propTypes = {
   }),
   onLoggedIn: PropTypes.func.isRequired,
 };
+
+export default connect(mapStateToProps, {setUser}) (LoginView);

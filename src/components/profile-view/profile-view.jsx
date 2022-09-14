@@ -256,19 +256,20 @@ export class ProfileView extends React.Component {
         <Row 
           className='favorites mt-2 gap-2' 
           lg={6} 
-          md={3}
-          sm={3}
+          md={4}
+          sm={4}
+          xs={2}
            >
           {favoriteMoviesList.map((movie) => {
             return (
               <div key={movie._id}>
-                <Card bg='dark' text='light'>
+                <Card bg='dark' text='light' >
                     <Link to={`/movies/${movie._id}`}>
                       <Card.Img
+                        className='favmovie-img'
                         variant='top'
                         crossOrigin='anonymous'
                         src={movie.ImagePath}
-                        style={{ minHeight: '15rem', maxHeight: '30rem' }}
                         />
                     </Link>
                   <Card.Body>

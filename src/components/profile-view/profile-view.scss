@@ -5,6 +5,10 @@
 
 }
 
+.favorites {
+  justify-content: center;
+}
+
 .remove-btn {
   float: right;
 }
@@ -13,6 +17,9 @@
   float: right;
 }
 
-.favorites {
-  justify-content: center;
+.favmovie-img {
+  min-width: 7rem;
+  max-width: 22rem;
+  min-height: 18rem;
+  max-height: 20rem;
 }

@@ -1,10 +1,14 @@
 import React from 'react';
 
 // React-bootstrap imports 
-import { Navbar, Container, Nav, Button, Offcanvas, Col, Row } from 'react-bootstrap';
+import { Navbar, Container, Nav, Button, Offcanvas, Col, } from 'react-bootstrap';
+
+// Searchbar/movie filter
+import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
 
 // Custom SCSS
 import '../navbar/navbar.scss';
+
 
 
 export function NavBar({ user }) {
@@ -30,10 +34,13 @@ export function NavBar({ user }) {
       className='main-nav' 
       sticky='top' 
       bg='dark' 
-      expand='xxl' 
+      expand='md' 
       variant='dark'>
       <Container fluid>
         <Button variant='info' href='/' >myFlix</Button>
+        <Col className='mx-1'>
+          <VisibilityFilterInput expand='lg' />
+        </Col>
         <Navbar.Toggle aria-controls='offcanvasNavbar-expand' />
           <Navbar.Offcanvas className='sidenav'>
             <Offcanvas.Header closeButton>

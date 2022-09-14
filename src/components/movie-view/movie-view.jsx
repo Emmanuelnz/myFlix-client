@@ -15,7 +15,7 @@ import '../movie-view/movie-view.scss';
 export class MovieView extends React.Component {
 
   addFavorite(movie) {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
     const username = localStorage.getItem('user');
 
     axios.post( `https://myflixfr.herokuapp.com/users/${username}/movies/${movie._id}`, "", 
@@ -35,11 +35,12 @@ export class MovieView extends React.Component {
   
     return (
       <Container fluid>
-        <Row>
-          <Col>
-            <Card bg='dark' text='light'>
+        <Row >
+          <Col style={{ display: 'flex', justifyContent: 'center' }}>
+            <Card bg='dark' text='light' className='movie-viewcrd'>
               <Card.Body>
               <Card.Img
+                className='movieImg'
                 crossOrigin='anonymous' 
                 src={ movie.ImagePath } />
                 <Card.Title className='pt-1'>

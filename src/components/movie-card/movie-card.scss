@@ -1,6 +1,18 @@
-.movie-card {
+.mainv-card-title {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-
 }
+
+.mainv-card {
+  max-width: 15rem;
+  max-height: 10rem;
+}
+
+.mainv-img {
+  min-width: 7rem;
+  max-width: 22rem;
+  min-height: 18rem;
+  max-height: 20rem;
+}
+

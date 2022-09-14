@@ -19,14 +19,15 @@ export class MovieCard extends React.Component {
       <Col>
         <Card bg='dark' text='light'>
           <Link to={`movies/${movie._id}`} >
-            <Card.Img 
+            <Card.Img
+              className='mainv-img'
               variant='top' 
               crossOrigin='anonymous'
               src={movie.ImagePath} 
               />
           </Link>
-          <Card.Body style={{ height: '5rem'}}>
-            <Card.Title className='movie-card'>{movie.Title}</Card.Title>
+          <Card.Body className='mainv-card' >
+            <Card.Title className='mainv-card-title'>{movie.Title}</Card.Title>
           </Card.Body>
           <Card.Footer>
             <Link to={`/movies/${movie._id}`}>

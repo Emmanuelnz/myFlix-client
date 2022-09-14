@@ -35,6 +35,20 @@ secondary color ()- #4ac4a8 cyan
   float: right;
 }
 
+.movieImg {
+  min-width: 5rem;
+  max-width: 20rem;
+  min-height: 8rem;
+  max-height: 25rem;
+}
+
+.movie-viewcrd {
+  min-width: 7rem;
+  max-width: 20rem;
+  min-height: 14rem;
+  max-height: 70rem;
+}
+
 .title {
   text-align: center;
   font-weight: 500;
@@ -49,6 +63,10 @@ span {
   text-overflow: ellipsis;
 }
 
+.favorites {
+  justify-content: center;
+}
+
 .remove-btn {
   float: right;
 }
@@ -57,16 +75,31 @@ span {
   float: right;
 }
 
-.favorites {
-  justify-content: center;
+.favmovie-img {
+  min-width: 7rem;
+  max-width: 22rem;
+  min-height: 18rem;
+  max-height: 20rem;
 }
 .main-view {
   justify-content: center;
 }
-.movie-card {
+.mainv-card-title {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.mainv-card {
+  max-width: 15rem;
+  max-height: 10rem;
+}
+
+.mainv-img {
+  min-width: 7rem;
+  max-width: 22rem;
+  min-height: 18rem;
+  max-height: 20rem;
 }
 /* Colors used -
 
